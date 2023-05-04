@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index',["myName" => "hein htet zan","age" => 28]);
+})->name("page.home");
+
+Route::get('/about-us',fn()=> view("about")->with("a","aaa"))->name('page.about');
+// Route::get('/contact-us',fn()=> view('contact'));
+Route::view('/contact-us',"contact",["phone" => "09999955858"])->name('page.contact');
+
